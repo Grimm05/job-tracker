@@ -1,0 +1,59 @@
+# =========================
+# IntelliJ / IDE
+# =========================
+.idea/
+*.iml
+*.iws
+*.ipr
+.project
+.classpath
+.settings/
+.factorypath
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# =========================
+# Backend - Spring Boot / Maven
+# =========================
+job-tracker-backend/target/
+job-tracker-backend/.mvn/wrapper/maven-wrapper.jar
+job-tracker-backend/.apt_generated
+job-tracker-backend/.springBeans
+job-tracker-backend/.sts4-cache
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+# =========================
+# Frontend - Angular / Node
+# =========================
+job-tracker-frontend/node_modules/
+job-tracker-frontend/dist/
+job-tracker-frontend/.angular/cache/
+job-tracker-frontend/out-tsc/
+job-tracker-frontend/coverage/
+job-tracker-frontend/tmp/
+job-tracker-frontend/bazel-out/
+job-tracker-frontend/npm-debug.log*
+job-tracker-frontend/yarn-error.log*
+
+# =========================
+# Logs
+# =========================
+*.log
+
+# =========================
+# Docker / Environment
+# =========================
+.env
+.env.*
+!.env.example
+docker-compose.override.yml
+
+# =========================
+# OS files
+# =========================
+.DS_Store
+Thumbs.db
