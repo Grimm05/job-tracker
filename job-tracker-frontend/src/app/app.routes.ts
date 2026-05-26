@@ -1,9 +1,10 @@
 import { Routes } from '@angular/router';
 import { authGuard } from './core/guards/auth.guard';
 
-
 export const routes: Routes = [
-  { path: '', redirectTo: 'applications', pathMatch: 'full' },
+  { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+
+  // ── Routes publiques ──
   {
     path: 'auth',
     children: [
@@ -19,13 +20,34 @@ export const routes: Routes = [
       }
     ]
   },
+
+  // ── Routes protégées — toutes dans le layout ──
   {
-    path: 'applications',
-    canActivate: [authGuard],     // ← toutes les routes applications protégées
+    path: '',
+    canActivate: [authGuard],
+    loadComponent: () => import('./core/layout/main-layout.component')
+      .then(m => m.MainLayoutComponent),
     children: [
-      { path: '', loadComponent: () => import('./features/applications/list/application-list.component').then(m => m.ApplicationListComponent) },
-      { path: 'new', loadComponent: () => import('./features/applications/create/application-create.component').then(m => m.ApplicationCreateComponent) },
-      { path: ':id', loadComponent: () => import('./features/applications/detail/application-detail.component').then(m => m.ApplicationDetailComponent) }
+      {
+        path: 'dashboard',
+        loadComponent: () => import('./features/dashboard/dashboard.component')
+          .then(m => m.DashboardComponent)
+      },
+      {
+        path: 'applications',
+        loadComponent: () => import('./features/applications/list/application-list.component')
+          .then(m => m.ApplicationListComponent)
+      },
+      {
+        path: 'applications/new',
+        loadComponent: () => import('./features/applications/create/application-create.component')
+          .then(m => m.ApplicationCreateComponent)
+      },
+      {
+        path: 'applications/:id',
+        loadComponent: () => import('./features/applications/detail/application-detail.component')
+          .then(m => m.ApplicationDetailComponent)
+      }
     ]
   }
 ];

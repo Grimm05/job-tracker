@@ -1,7 +1,7 @@
 spring:
   jpa:
     hibernate:
-      ddl-auto: validate      # jamais 'update' en prod — utilise Flyway sinon
+      ddl-auto: update      # jamais 'update' en prod — utilise Flyway sinon
     show-sql: false
 
   datasource:

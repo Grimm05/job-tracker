@@ -15,7 +15,6 @@ spring:
     properties:
       hibernate:
         format_sql: true
-        dialect: org.hibernate.dialect.PostgreSQLDialect
 
   jackson:
     default-property-inclusion: non_null   # les champs null n'apparaissent pas dans le JSON
@@ -26,8 +25,6 @@ server:
 logging:
   level:
     com.jobtracker: DEBUG
-
-kind: Application
 
 app:
   jwt:

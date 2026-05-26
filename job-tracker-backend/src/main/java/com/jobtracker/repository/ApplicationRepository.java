@@ -20,4 +20,6 @@ public interface ApplicationRepository
     Page<Application> findByCompanyContainingIgnoreCase(String company, Pageable pageable);
 
     boolean existsByCompanyAndPosition(String company, String position);
+
+    long countByStatus(ApplicationStatus status);
 }
