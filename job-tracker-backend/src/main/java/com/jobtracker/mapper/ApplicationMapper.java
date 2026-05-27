@@ -9,10 +9,14 @@ import org.mapstruct.*;
 @Mapper(componentModel = "spring")
 public interface ApplicationMapper {
 
-    ApplicationResponse toResponse(Application application);
-
+    @Mapping(target = "id",        ignore = true)  // ← généré par JPA
+    @Mapping(target = "createdAt", ignore = true)  // ← géré par @CreatedDate
+    @Mapping(target = "updatedAt", ignore = true)  // ← géré par @LastModifiedDate
     Application toEntity(ApplicationCreateRequest request);
 
+    ApplicationResponse toResponse(Application application);
+
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-    void updateEntityFromRequest(ApplicationUpdateRequest request, @MappingTarget Application application);
+    void updateEntityFromRequest(ApplicationUpdateRequest request,
+                                 @MappingTarget Application application);
 }
